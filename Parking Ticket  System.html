@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Ticket System</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f1f1f1;
+            padding: 20px;
+            margin: 0;
+
+        }
+
+        .container{
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        h1 .h2{
+            text-align: center;
+            color: #333;
+        }
+
+        form{
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input ,select,button{
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button{
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background-color: #0056b3;
+        }
+
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+        }
+
+        th ,td{
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        th{
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Parking Ticket Generator</h1>
+        <form id="ticketForm">
+            <input type="text" id="name"
+            placeholder="Driver's Name" required/>
+            <input type="text" id="LicensePlate"
+            placeholder="License Plate" required/>
+            <input type="text" id="carModel"
+            placeholder="Car Model (e.g Toyota Corolla, BMW,Volkswagen,Range Rover)" required/>
+            <select itemid="duration"required>
+                <option value="">Select Parking Duration</option>
+                <option value="1 hour">1 hour</option>
+                <option value="2 hours">2 hours</option>
+                <option value="3 hours">3 hours</option>
+                <option value="4 hours">4 hours</option>
+                <option value="Full Day">Full Day</option>
+
+
+            </select>
+            <button type="Submit">Generate Ticket</button>
+        </form>
+        <h2>Issued  Tickets</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ticket No</th>
+                    <th>Name</th>
+                    <th>Plate</th>
+                    <th>Car</th>
+                    <th>Duration</th>
+                </tr>
+            </thead>
+            <tbody id="ticketTable"></tbody>
+        </table>
+    </div>
+
+
+    <script>
+        let ticketNumber=1001;
+
+
+        document.getElementById("ticketForm")
+        .addEventListener("submit") ,function(e){
+            e.preventdefault();
+
+            const name= document.getElementById("name").value.trim();
+            const plate=document.getElementById("plate").value.trim();
+            const car=document.getElementById("carModel").value.trim();
+            const duration=document.getElementById("duration").value;
+
+
+            const row =document.createElement("tr");
+            row.innerHTML=
+            "<th>" + ticketNumber + "</td>" +
+                "<th>" + name+ "</td>" +
+                    "<th>" + plate+ "</td>" +
+                        "<th>" + car + "</td>" +
+                            "<th>" + duration + "</td>" + 
+
+
+                                document.getElementById("ticketTable").appendChild(row);
+
+                                ticketNumber++;
+                                this.reset();
+
+                                
+
+            
+
+            
+        }
+    </script>
+    
+</body>
+</html>
